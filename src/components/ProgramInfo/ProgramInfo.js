@@ -21,7 +21,7 @@ class ProgramInfo extends Component {
     getProgramData = (programName) =>{
         axios({
             method: 'GET',
-            url: `api/program?name=${programName}`
+            url: `/api/program?name=${programName}`
         }).then((response) => {
             this.setState({
                 ...this.state,
@@ -33,7 +33,9 @@ class ProgramInfo extends Component {
     }
     render(){
         return(
-            <div></div>
+            <div>{this.state.params}
+            {JSON.stringify(this.props)}
+            </div>
         )
     }
 }
