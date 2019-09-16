@@ -23,7 +23,7 @@ if (process.env.DATABASE_URL) {
   config = {
     host: process.env.DEV_HOST, // Server hosting the postgres database
     port: 5432, // env var: PGPORT
-    database: process.env.DEV_DB, // CHANGE THIS LINE! env var: PGDATABASE, this is likely the one thing you need to change to get up and running
+    database: process.env.DEV_DB, 
     user: process.env.DEV_USER,
     password: process.env.DEV_PASSWORD,
     max: 10, // max number of clients in the pool
