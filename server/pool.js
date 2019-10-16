@@ -1,5 +1,6 @@
 const pg = require('pg');
 const url = require('url');
+require('dotenv').config();
 
 let config = {};
 
@@ -21,13 +22,15 @@ if (process.env.DATABASE_URL) {
   };
 } else {
   config = {
-    host: process.env.DEV_HOST, // Server hosting the postgres database
-    port: 5432, // env var: PGPORT
-    database: process.env.DEV_DB, 
-    user: process.env.DEV_USER,
-    password: process.env.DEV_PASSWORD,
+    host: process.env.host, // Server hosting the postgres database
+    port: 5432, // env var: PGPORT,
+    ssl: true, 
+    database: process.env.database, 
+    user: process.env.user,
+    password: process.env.password,
     max: 10, // max number of clients in the pool
-    idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
+    idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed,
+
   };
 }
 

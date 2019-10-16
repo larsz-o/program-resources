@@ -21,7 +21,7 @@ class ProgramInfo extends Component {
     getProgramData = (programName) =>{
         axios({
             method: 'GET',
-            url: `/api/program?name=${programName}`
+            url: `api/program?name=${programName}`
         }).then((response) => {
             this.setState({
                 ...this.state,
