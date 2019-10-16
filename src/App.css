@@ -4,9 +4,29 @@
 .container {
   margin: 10px;
 }
+.flex-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  background-color: white;
+  padding: 5vh;
+}
 h3 {
   font-weight: 400;
   color: #0072c8; 
+}
+html, body {
+  background-color: #f5f4f0;
+}
+label {
+  color: #0072c8;
+  font-weight: 400;
+}
+.logo-space {
+  background-color: rgba(0,52,120, .9);
+  max-height: 15vh;
+
 }
 select {
   padding: 5px;

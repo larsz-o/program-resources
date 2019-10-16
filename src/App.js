@@ -3,9 +3,11 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import ProgramInfo from './components/ProgramInfo/ProgramInfo';
 import ContributeData from './components/ContributeData/ContributeData';
-
+import Header from './components/Header/Header'; 
 function App() {
   return (
+    <div>
+  <Header/>
     <Router>
       <Switch>
         <Route path="/admin" component={ContributeData}/>
@@ -14,6 +16,8 @@ function App() {
       </Switch>
       
     </Router>
+    </div>
+  
   );
 }
 

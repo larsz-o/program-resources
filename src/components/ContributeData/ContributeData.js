@@ -1,11 +1,12 @@
-import React, { Component } from 'react'; 
-import axios from 'axios'; 
-import Select from '@material-ui/core/Select'; 
+import React, { Component } from 'react';
+import axios from 'axios';
+import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 
+
 class ContributeData extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             programs: [],
@@ -14,30 +15,30 @@ class ContributeData extends Component {
             category_select: 'n/a'
         }
     }
-    componentDidMount(){
+    componentDidMount() {
         this.getPrograms();
         this.getCategories();
     }
     getCategories = () => {
         axios({
-            method: 'GET', 
+            method: 'GET',
             url: 'api/program/categories'
         }).then((response) => {
             this.setState({
-                ...this.state, 
+                ...this.state,
                 categories: response.data
             })
         }).catch((error) => {
             console.log('Error getting categories', error);
         })
     }
-    getPrograms = () =>{
+    getPrograms = () => {
         axios({
-            method: 'GET', 
+            method: 'GET',
             url: 'api/program/names'
         }).then((response) => {
             this.setState({
-                ...this.state, 
+                ...this.state,
                 programs: response.data
             })
         }).catch((error) => {
@@ -46,40 +47,51 @@ class ContributeData extends Component {
     }
     handleChangeFor = (event, property) => {
         this.setState({
-            ...this.state, 
+            ...this.state,
             [property]: event.target.value
         })
     }
-    render(){
-        return(
-            <div className="container">
-                <div className="col-6 col-s-12">
-                <h3>Add a new resource</h3>
-                <div className="spectrum-yellow-bar"></div>
+    render() {
+        return (
+            <div className="container-fluid">
+                <div className="flex-box">
+                    <div className="col-10 col-s-12">
+                        <h3>Add a new resource</h3>
+                    <div className="flex-box">
+                    <div>
+                            <FormControl>
+                                <label>Program</label>
+                                <Select value={this.state.program_select} onChange={(event) => this.handleChangeFor(event, 'program_select')}>
+                                    <MenuItem value="n/a">---choose one--</MenuItem>
+                                    {this.state.programs.map((program, i) => {
+                                        return (
+                                            <MenuItem value={program.program_name} key={i}>{program.program_name}</MenuItem>
+                                        )
+                                    })}
+                                </Select>
+                            </FormControl>
+                        </div>
+                        <div>
+                            <FormControl>
+                                <label>Resource Category</label>
+                                <Select value={this.state.category_select} onChange={(event) => this.handleChangeFor(event, 'category_select')}>
+                                    <MenuItem value="n/a">---choose one--</MenuItem>
+                                    {this.state.categories.map((category, i) => {
+                                        return (
+                                            <MenuItem value={category.category_name} key={i}>{category.display_name}</MenuItem>
+                                        )
+                                    })}
+                                </Select>
+                            </FormControl>
+                        </div>
+
+                    </div>
+                        
+                    </div>
+
                 </div>
-              <FormControl>
-              <label>Program</label>
-                <Select value={this.state.program_select} onChange={(event)=> this.handleChangeFor(event, 'program_select')}>
-                    <MenuItem value="n/a">---choose one--</MenuItem>
-                    {this.state.programs.map((program, i) => {
-                        return(
-                    <MenuItem value={program.program_name} key={i}>{program.program_name}</MenuItem>
-                        )
-                    })}
-                </Select>
-              </FormControl>
-          <FormControl>
-          <label>Resource Category</label>
-                <Select value={this.state.category_select} onChange={(event)=> this.handleChangeFor(event, 'category_select')}>
-                    <MenuItem value="n/a">---choose one--</MenuItem>
-                    {this.state.categories.map((category, i) => {
-                        return(
-                    <MenuItem value={category.category_name} key={i}>{category.display_name}</MenuItem>
-                        )
-                    })}
-                </Select>
-          </FormControl>
-         
+
+
             </div>
         );
     }

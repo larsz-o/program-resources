@@ -8,7 +8,7 @@ console.log(program)
 console.log('in get hit')
 })
 router.get('/names', (req, res) => {
-    const query = `SELECT * FROM "programs";`;
+    const query = `SELECT * FROM "programs" ORDER BY "program_name" ASC;`;
     pool.query(query).then((results) => {
         res.send(results.rows);
     }).catch((error) => {
@@ -16,7 +16,7 @@ router.get('/names', (req, res) => {
     })
 })
 router.get('/categories', (req, res) => {
-    const query = `SELECT * FROM "categories";`;
+    const query = `SELECT * FROM "categories" ORDER BY "category_name" ASC;`;
     pool.query(query).then((results) => {
         res.send(results.rows);
     }).catch((error) => {
