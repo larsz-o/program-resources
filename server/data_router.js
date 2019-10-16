@@ -3,9 +3,16 @@ const router = express.Router();
 const pool = require('./pool');
 
 router.get('/', (req, res) => {
-const program = req.query.name; 
-console.log(program)
-console.log('in get hit')
+let program = req.query.name; 
+// get all information about courses, faculty, updates, resources, etc. get everything that has a program id on it. 
+const query = `SELECT * FROM "programs" WHERE "url" ILIKE $1`;
+pool.query(query, [program]).then((results) => {
+    console.log(results.rows);
+    res.send(results.rows);
+}).catch((error) => {
+    console.log('Error getting program data');
+    res.sendStatus(500);
+})
 })
 router.get('/names', (req, res) => {
     const query = `SELECT * FROM "programs" ORDER BY "program_name" ASC;`;
@@ -13,6 +20,7 @@ router.get('/names', (req, res) => {
         res.send(results.rows);
     }).catch((error) => {
         console.log('Error getting program names', error);
+        res.sendStatus(500);
     })
 })
 router.get('/categories', (req, res) => {
@@ -21,6 +29,8 @@ router.get('/categories', (req, res) => {
         res.send(results.rows);
     }).catch((error) => {
         console.log('Error getting categories', error);
+        res.sendStatus(500);
     })
 })
+
 module.exports = router; 
