@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 class CardContainer extends Component {
     constructor(props) {
@@ -14,9 +13,10 @@ class CardContainer extends Component {
         let categoryName = this.props.categories.filter(function(category){
             if(category.id === category_id){
                 return category;
+            } else {
+                return false;
             }
         })
-        console.log(categoryName);
         this.setState({
             ...this.state,
             selected: category_id,
@@ -32,9 +32,11 @@ class CardContainer extends Component {
                 );
             }
             )}
+             <a href={`https://www.brandeis.edu/gps/student-courses/programs/listings/${this.props.program}.html`} target="_blank" rel="noopener noreferrer"><div className="lead-card"><img src="https://imagesgpscourses.s3.amazonaws.com/icons_program_resources/checklist+(2).svg" height="100px" alt=""/><h4>Program Requirements</h4></div></a>
             </div>):(<div>
                 <div className="center"><h2>{this.state.category}</h2></div>
                 <div className="flex-box-center">
+                    {JSON.stringify(this.props.resources)}
                     {this.props.resources.map((resource, i) => {
                         return(<div className="lead-card" key={i}>{resource.name}</div>);
                     })}

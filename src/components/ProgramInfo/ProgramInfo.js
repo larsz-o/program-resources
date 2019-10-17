@@ -74,7 +74,7 @@ class ProgramInfo extends Component {
                             <h2 className="title">{this.state.data[0].program_name}</h2>
                         </div>
                         <div className="col-7">
-                            <CardContainer categories={this.state.categories} resources={this.state.resources}/>
+                            <CardContainer categories={this.state.categories} resources={this.state.resources} program={this.state.params}/>
                         </div>
                     </div>
                 ) : (<h3>Nothing here</h3>)}
