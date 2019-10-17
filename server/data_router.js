@@ -4,7 +4,7 @@ const pool = require('./pool');
 
 router.get('/', (req, res) => {
 let program = req.query.name; 
-// get all information about courses, faculty, updates, resources, etc. get everything that has a program id on it. 
+
 const query = `SELECT * FROM "programs" WHERE "url" ILIKE $1`;
 pool.query(query, [program]).then((results) => {
     console.log(results.rows);
@@ -13,6 +13,17 @@ pool.query(query, [program]).then((results) => {
     console.log('Error getting program data');
     res.sendStatus(500);
 })
+})
+router.get('/resources', (req, res) => {
+    // get all information about courses, faculty, updates, resources, etc. get everything that has a program id on it. 
+    let id = req.query.id;
+    const query = `SELECT resources.id AS "resource_id", "name", "url", "description", "image_url", categories.category_name FROM "resources" JOIN "categories" ON 'resources.category_id' = 'categories.id' WHERE "program_id" = 1;`; 
+    pool.query(query, [id]).then((results) => {
+        res.send(results.rows);
+    }).catch((error) => {
+        console.log('Error getting faculty', error);
+        res.sendStatus(500);
+    })
 })
 router.get('/names', (req, res) => {
     const query = `SELECT * FROM "programs" ORDER BY "program_name" ASC;`;

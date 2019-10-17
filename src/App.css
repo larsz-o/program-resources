@@ -1,6 +1,15 @@
 * {
   box-sizing: border-box;
 }
+a {
+  color: #0072c8;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  background-color: gold;
+}
+
 .container {
   margin: 10px;
 }
@@ -12,21 +21,73 @@
   background-color: white;
   padding: 5vh;
 }
-h3 {
+.flex-box-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-image: url('https://imagesgpscourses.s3.amazonaws.com/adult-businessman-close-up-374820.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 5vh;
+}
+.flex-box-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.flex-box-column {
+  display: flex; 
+  flex-direction: column;
+  justify-content: baseline;
+  flex-wrap: wrap;
+}
+.full-height {
+  height: 100%;
+}
+h2, h3, h4 {
   font-weight: 400;
   color: #0072c8; 
+  font-family: 'Catamaran', sans-serif;
 }
 html, body {
   background-color: #f5f4f0;
+  height: 100%;
 }
+
 label {
   color: #0072c8;
   font-weight: 400;
 }
+.lead-card {
+  background-color: rgba(245, 248, 252, .4);
+  padding: 2em;
+  margin: 1em;
+  box-shadow: -1rem 0 3rem rgba(112, 112, 112, .4);
+  border-radius: 5px; 
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: center;
+  transition: 0.3s;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 320px;
+  flex: 0 0 320px;
+}
+
+.lead-card > h4 {
+  color: rgba(0,52,120, .9);
+  text-align: center;
+  font-size: 1.5rem;
+}
 .logo-space {
   background-color: rgba(0,52,120, .9);
-  max-height: 15vh;
-
 }
 select {
   padding: 5px;
@@ -37,6 +98,15 @@ select {
   border-radius: 5px; 
   height:5px; 
   margin-bottom: 2vh;
+}
+.title {
+  background-color: rgba(0,52,120, .9);
+  color: white;
+  padding: 5vh;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 2rem;
+ 
 }
 /* For mobile: */
 [class*="col-"] {
