@@ -70,14 +70,12 @@ class ProgramInfo extends Component {
                 {/* if nothing is in the data array in state, display an error message */}
                 {this.state.data.length > 0 ? (
                     <div className="flex-box-center">
-                    <div className="col-6 flex-box-image">
+                        <div className="col-5 flex-box-image">
                             <h2 className="title">{this.state.data[0].program_name}</h2>
-                    </div>
-
-                    <div className="col-6">
-                        <CardContainer categories={this.state.categories}/>
-                    </div>
-                  
+                        </div>
+                        <div className="col-7">
+                            <CardContainer categories={this.state.categories} resources={this.state.resources}/>
+                        </div>
                     </div>
                 ) : (<h3>Nothing here</h3>)}
             </div>

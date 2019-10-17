@@ -9,7 +9,9 @@ a:hover {
   text-decoration: underline;
   background-color: gold;
 }
-
+.center {
+  text-align: center;
+}
 .container {
   margin: 10px;
 }
@@ -67,9 +69,9 @@ label {
   margin: 1em;
   box-shadow: -1rem 0 3rem rgba(112, 112, 112, .4);
   border-radius: 5px; 
-  display: flex;
   -webkit-box-pack: end;
   -ms-flex-pack: end;
+  align-self: center; 
   justify-content: center;
   transition: 0.3s;
   -webkit-box-orient: vertical;
@@ -79,12 +81,16 @@ label {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 320px;
   flex: 0 0 320px;
+  text-align: center;
+
 }
 
 .lead-card > h4 {
   color: rgba(0,52,120, .9);
-  text-align: center;
   font-size: 1.5rem;
+}
+.lead-card:hover{
+  cursor: pointer;
 }
 .logo-space {
   background-color: rgba(0,52,120, .9);
