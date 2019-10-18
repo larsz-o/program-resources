@@ -44,11 +44,9 @@ a {
 .flex-box-image {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
-  background-image: url('https://imagesgpscourses.s3.amazonaws.com/adult-businessman-close-up-374820.jpg');
-  background-size: cover;
+  background-image: url('https://imagesgpscourses.s3.amazonaws.com/adult-beard-business-2102415+(1).jpg');
+  background-size: contain;
   background-repeat: no-repeat;
   padding: 5vh;
 }
@@ -151,7 +149,7 @@ select {
   border-radius: 5px;
   width: 100%;
   font-size: 2rem;
- 
+  margin-top: 60vh;
 }
 /* For mobile: */
 [class*="col-"] {

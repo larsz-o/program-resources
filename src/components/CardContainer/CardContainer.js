@@ -45,7 +45,7 @@ class CardContainer extends Component {
                     <h2 className="category-title center">{this.state.category}</h2>
                 </div>
          
-                <div className="flex-box-center col-12">
+                <div className="flex-box-center flex-stretch col-12">
                     {this.props.resources.map((resource, i) => {
                         if (resource.category_id === this.state.selected && this.state.selected !== 5) {
                             return (
