@@ -31,7 +31,7 @@ class CardContainer extends Component {
     }
     render() {
         return (
-            <div>{this.state.selected === '' ? (<div className="flex-box-center">{this.props.categories.map((category, i) => {
+            <div className="full-height">{this.state.selected === '' ? (<div className="flex-box-center">{this.props.categories.map((category, i) => {
                 return (
                     <div onClick={() => this.selectCategory(category.id)} className="lead-card" key={i}><img src={category.icon} height="100px" alt={category.category_name} /><h4>{category.display_name}</h4></div>
                 );
