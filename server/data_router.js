@@ -16,11 +16,11 @@ pool.query(query, [program]).then((results) => {
 router.get('/resources', (req, res) => {
     // get all information about courses, faculty, updates, resources, etc. get everything that has a program id on it. 
     let id = req.query.id;
-    const query = `SELECT *, 'resourses.id' AS "resource_id", 'categories.id' AS "category_id" FROM "resources" JOIN "categories" ON resources.category_id = categories.id WHERE "program_id" = $1 OR "category_id" = $2;`
+    const query = `SELECT "name", "url", "description", "image_url", "category_id", "program_id", "resources"."id", "category_name", "display_name" FROM "resources" JOIN "categories" ON "resources"."category_id" = "categories"."id" WHERE "program_id" = $1 OR "category_id" = $2 ORDER BY "id" ASC`;
     pool.query(query, [id, 4]).then((results) => {
         res.send(results.rows);
     }).catch((error) => {
-        console.log('Error getting faculty', error);
+        console.log('Error getting resources', error);
         res.sendStatus(500);
     })
 })

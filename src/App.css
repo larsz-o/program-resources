@@ -5,6 +5,18 @@ a {
   color: #0072c8;
   text-decoration: none;
 }
+.align-left {
+  text-align: left;
+}
+.back-arrow:hover {
+  cursor: pointer;
+}
+.category-title {
+  letter-spacing: 3px;
+  word-spacing: 10px;
+  color: rgba(0,52,120, .9);
+
+}
 .center {
   text-align: center;
 }
@@ -42,6 +54,9 @@ a {
   justify-content: baseline;
   flex-wrap: wrap;
 }
+.flex-stretch {
+  align-content: stretch;
+}
 .full-height {
   height: 100%;
 }
@@ -67,7 +82,6 @@ label {
   border-radius: 5px; 
   -webkit-box-pack: end;
   -ms-flex-pack: end;
-  align-self: center; 
   justify-content: center;
   transition: 0.3s;
   -webkit-box-orient: vertical;
@@ -78,7 +92,6 @@ label {
   -ms-flex: 0 0 320px;
   flex: 0 0 320px;
   text-align: center;
-
 }
 
 .lead-card > h4 {
