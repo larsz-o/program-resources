@@ -4,12 +4,11 @@ const pool = require('./pool');
 
 router.get('/', (req, res) => {
 let program = req.query.name; 
-
 const query = `SELECT * FROM "programs" WHERE "url" ILIKE $1`;
 pool.query(query, [program]).then((results) => {
     res.send(results.rows);
 }).catch((error) => {
-    console.log('Error getting program data');
+    console.log('Error getting program data', error);
     res.sendStatus(500);
 })
 })
