@@ -46,7 +46,7 @@ a {
   flex-direction: column;
   flex-wrap: wrap;
   background-image: url('https://imagesgpscourses.s3.amazonaws.com/adult-beard-business-2102415+(1).jpg');
-  background-size: contain;
+  background-size: 100%;
   background-repeat: no-repeat;
   padding: 5vh;
 }
@@ -147,7 +147,7 @@ select {
   color: white;
   padding: 5vh;
   border-radius: 5px;
-  width: 100%;
+  max-width: 100%;
   font-size: 2rem;
   margin-top: 60vh;
 }

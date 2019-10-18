@@ -45,11 +45,11 @@ class CardContainer extends Component {
                     <h2 className="category-title center">{this.state.category}</h2>
                 </div>
          
-                <div className="flex-box-center flex-stretch col-12">
+                <div className="flex-box-center flex-stretch">
                     {this.props.resources.map((resource, i) => {
                         if (resource.category_id === this.state.selected && this.state.selected !== 5) {
                             return (
-                                <div className="lead-card col-12" key={i}>
+                                <div className="lead-card col-6" key={i}>
                                    <div className="card-title"> <img src={resource.image_url} width="150px" alt={`icon for ${resource.name}`}/>
                                    <h3><a href={resource.url} target="_blank" rel="noopener noreferrer">{resource.name}</a></h3></div>
                                    <div className="align-left"><p>{resource.description}</p></div>
