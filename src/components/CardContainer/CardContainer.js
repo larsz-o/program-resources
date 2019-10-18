@@ -37,22 +37,32 @@ class CardContainer extends Component {
                 );
             }
             )}
-                <a href={`https://www.brandeis.edu/gps/student-courses/programs/listings/${this.props.program}.html`} target="_blank" rel="noopener noreferrer"><div className="lead-card"><img src="https://imagesgpscourses.s3.amazonaws.com/icons_program_resources/checklist+(2).svg" height="100px" alt="" /><h4>Program Requirements</h4></div></a>
+                <a href={`https://www.brandeis.edu/gps/student-courses/programs/listings/${this.props.program}.html`} target="_blank" rel="noopener noreferrer"><div className="lead-card"><img src="https://imagesgpscourses.s3.amazonaws.com/icons_program_resources/checklist+(2).svg" height="100px" alt="checklist icon" /><h4>Program Requirements</h4></div></a>
             </div>) : (<div>
-                <div className="col-3">
+                
+                <div className="flex">
                     <img src="https://imagesgpscourses.s3.amazonaws.com/icons_program_resources/left-arrow.svg" height="50px" className="back-arrow" alt="back arrow" onClick={()=>this.resetCategory()}/>
+                    <h2 className="category-title center">{this.state.category}</h2>
                 </div>
-                <div className="center"><h2 className="category-title">{this.state.category}</h2></div>
-                <div className="flex-box-center flex-stretch">
+         
+                <div className="flex-box-center col-12">
                     {this.props.resources.map((resource, i) => {
-                        if (resource.category_id === this.state.selected) {
+                        if (resource.category_id === this.state.selected && this.state.selected !== 5) {
                             return (
-                                <div className="lead-card" key={i}>
-                                   <div className="card-title"> <img src={resource.image_url} height="100px" alt={`icon for ${resource.name}`}/>
+                                <div className="lead-card col-12" key={i}>
+                                   <div className="card-title"> <img src={resource.image_url} width="150px" alt={`icon for ${resource.name}`}/>
                                    <h3><a href={resource.url} target="_blank" rel="noopener noreferrer">{resource.name}</a></h3></div>
                                    <div className="align-left"><p>{resource.description}</p></div>
                                 </div>
-                                );}
+                                );} else if (resource.category_id === this.state.selected && this.state.selected === 5){
+                                    return (
+                                <div className="lead-card-faculty" key={i}>
+                                   <div className="card-title"><img src={resource.image_url} className="faculty-img" alt={`icon for ${resource.name}`}/>
+                                   <h3><a href={resource.url} target="_blank" rel="noopener noreferrer">{resource.name}</a></h3></div>
+                                   <div className="align-left"><p>{resource.description}</p></div>
+                                </div>
+                                    )
+                                }
                                 else {
                                     return false;
                                 }
