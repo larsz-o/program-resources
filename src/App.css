@@ -27,7 +27,9 @@ a {
 .container {
   margin: 10px;
 }
-
+.faculty-img {
+  border-radius: 50%;
+}
 .flex-box{
   display: flex;
   flex-direction: row;
@@ -103,10 +105,10 @@ label {
   text-align: center;
 }
 .lead-card-faculty{
-  background-color: rgba(245, 248, 252, .4);
+  /* background-color: rgba(245, 248, 252, .4); */
   padding: 2em;
   margin: 1em;
-  box-shadow: -1rem 0 3rem rgba(112, 112, 112, .4);
+  /* box-shadow: -1rem 0 3rem rgba(112, 112, 112, .4); */
   border-radius: 5px; 
   -webkit-box-pack: end;
   -ms-flex-pack: end;
@@ -116,9 +118,9 @@ label {
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  /* -webkit-box-flex: 0;
+  -webkit-box-flex: 0;
   -ms-flex: 0 0 320px;
-  flex: 0 0 320px; */
+  flex: 0 0 320px;
   text-align: center;
 }
 

@@ -5,13 +5,19 @@ class CardContainer extends Component {
         super(props);
         this.state = {
             selected: '',
-            category: ''
+            category: '',
+            resources: this.props.resources
         }
     }
     resetCategory = () => {
+        //make sure that when you reset the category, all data is sorted the typical way, by id in an ascending order
+        let sorted = this.props.resources.sort(function(a,b){
+            return a.id-b.id;
+        })
         this.setState({
             selected: '',
-            category: ''
+            category: '', 
+            resources: sorted
         })
     }
     selectCategory = (category_id) => {
@@ -22,10 +28,18 @@ class CardContainer extends Component {
                 return false;
             }
         })
+        // if the resource is program communication, we want to see the latest ones first, so let's sort them by id in a descending order and then set them to local state.
+        let sorted = this.props.resources;
+        if(category_id === 3){
+            sorted = this.props.resources.sort(function(a,b){
+                return b.id-a.id;
+            })
+        }
         this.setState({
             ...this.state,
             selected: category_id,
-            category: categoryName[0].display_name
+            category: categoryName[0].display_name,
+            resources: sorted
         });
 
     }
@@ -46,7 +60,7 @@ class CardContainer extends Component {
                 </div>
          
                 <div className="flex-box-center flex-stretch">
-                    {this.props.resources.map((resource, i) => {
+                    {this.state.resources.map((resource, i) => {
                         if (resource.category_id === this.state.selected && this.state.selected !== 5) {
                             return (
                                 <div className="lead-card col-6" key={i}>
